@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+<div class="container">
+    <h1 class="my-3" style="font-weight: bolder;"><u>Add a friend</u></h1>
+    {% if user.is_authenticated %}
+    <form action="/" method="POST">
+    {% csrf_token %}
+        <div class="mb-2">
+            <label for="friendname" class="form-label">Name of your friend</label>
+            <input type="text" class="form-control" name="friendname" id="friendname" aria-describedby="friendname"
+            placeholder="Enter your friend's name">
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    {% else %}
+    <form action="/" method="POST">
+    {% csrf_token %}
+        <div class="mb-2">
+            <label for="friendname" class="form-label">Name of your friend</label>
+            <input type="text" class="form-control" name="friendname" id="friendname" aria-describedby="friendname"
+            placeholder="Enter your friend's name" disabled>
+        </div>
+        <button type="submit" class="btn btn-primary" disabled>Add</button>
+    </form>
+    {% endif %}
+
+    <h1 class="mt-3" style="font-weight: bolder;"><u>Your friends</u></h1>
+    <table class="table table-danger">
+        <thead>
+            <th scope="col">S.No.</th>
+            <th scope="col">Friend Name</th>
+            <th scope="col">Actions</th>
+        </thead>
+        <tbody>
+            {% for friend in friends %}
+                <tr>
+                    <td scope="row">{{forloop.counter}}</td>
+                    <td scope="row">{{friend.name}}</td>
+                    <td scope="row">
+                        <a href="/update/{{friend.sno}}" class="btn btn-danger btn-sm my-1">Update</a>
+                        <a href="/delete/{{friend.sno}}" class="btn btn-dark btn-sm">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

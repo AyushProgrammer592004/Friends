@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock title %}
+{% block body %}
+<div class="container my-3">
+    <h1><u>Signup Here</u></h1>
+    <form action="/signup" method="POST">
+        {% csrf_token %}
+        <div class="mb-2">
+            <label for="fname" class="form-label">First name</label>
+            <input type="text" class="form-control" name="fname" id="fname" aria-describedby="friendname"
+                placeholder="Enter your first name">
+        </div>
+        <div class="mb-2">
+            <label for="lname" class="form-label">Last name</label>
+            <input type="text" class="form-control" name="lname" id="lname" aria-describedby="friendname"
+                placeholder="Enter your last name">
+        </div>
+        <div class="mb-2">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" name="username" id="username" aria-describedby="friendname"
+                placeholder="Choose a username">
+        </div>
+        <div class="mb-2">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" aria-describedby="friendname"
+                placeholder="Enter your email address">
+        </div>
+        <div class="mb-2">
+            <label for="pass" class="form-label">Password</label>
+            <input type="password" class="form-control" name="pass" id="pass" aria-describedby="friendname"
+                placeholder="Choose a password">
+        </div>
+        <div class="mb-2">
+            <label for="cpass" class="form-label">Confirm password</label>
+            <input type="password" class="form-control" name="cpass" id="cpass" aria-describedby="friendname"
+                placeholder="Retype your password again">
+        </div>
+        <button type="submit" class="btn btn-primary">Signup</button>
+    </form>
+</div>
+{% endblock body %}

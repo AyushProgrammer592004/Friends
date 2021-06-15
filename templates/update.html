@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Update Friend{% endblock title %}
+{% block body %}
+<div class="container">
+    <h1 class="my-3" style="font-weight: bolder;"><u>Update Your friend</u></h1>
+    <form action="/update/{{friend.sno}}" method="POST">
+    {% csrf_token %}
+        <div class="mb-2">
+            <label for="friendname" class="form-label">Friend's Name</label>
+            <input type="text" class="form-control" name="friendname" id="friendname" aria-describedby="friendname"
+            placeholder="Enter your friend's name" value="{{friend.name}}">
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+</div>
+{% endblock body %}
